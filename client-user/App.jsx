@@ -1,7 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import HomePage from "./pages/HomePage";
+import { NavigationContainer } from "@react-navigation/native";
+import TabNavigator from "./Navigator/TabNavigator";
+import { View } from "react-native";
 
 export default function App() {
-  return <HomePage />;
+  return (
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
+  );
 }

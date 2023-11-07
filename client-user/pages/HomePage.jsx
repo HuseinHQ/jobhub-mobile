@@ -1,6 +1,26 @@
+import { useEffect, useState } from "react";
 import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from "react-native";
+import JobCard from "../components/JobCard";
 
 export default function HomePage() {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    fetchOneData();
+  }, []);
+
+  const fetchOneData = async () => {
+    try {
+      const response = await fetch("https://jobhub-server.huseinhk.me/public/jobs/1");
+      if (!response.ok) {
+        throw { name: "fetch_error" };
+      }
+      const resposneBody = await response.json();
+      setData(resposneBody);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={style.AndroidSafeArea}>
       <View className="bg-white p-4">
@@ -19,17 +39,9 @@ export default function HomePage() {
           </View>
         </View>
         <View className="bg-white m-2 p-4 rounded">
-          <Image />
-          <View>
-            <Text className="text-blue-700 font-bold">{"IT SUPPORT (Area : Bengkulu & Lampung)"}</Text>
-            <Image />
-          </View>
+          <JobCard data={data} />
         </View>
       </ScrollView>
-
-      <View className="bg-white p-4">
-        <Text className="text-blue-900 text-center text-lg font-extrabold">Rekomendasi Pekerjaan</Text>
-      </View>
     </View>
   );
 }
