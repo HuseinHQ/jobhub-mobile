@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from "react-native";
+import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from "react-native";
 import JobCard from "../components/JobCard";
 
 export default function HomePage() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
-    fetchOneData();
+    fetchData();
   }, []);
 
-  const fetchOneData = async () => {
+  const fetchData = async () => {
     try {
-      const response = await fetch("https://jobhub-server.huseinhk.me/public/jobs/1");
+      const response = await fetch("https://jobhub-server.huseinhk.me/public/jobs");
       if (!response.ok) {
         throw { name: "fetch_error" };
       }
@@ -38,8 +38,11 @@ export default function HomePage() {
             </TouchableOpacity>
           </View>
         </View>
+        {/* <FlatList data={data} renderItem=() /> */}
         <View className="bg-white m-2 p-4 rounded">
-          <JobCard data={data} />
+          {data.map((el) => (
+            <JobCard data={el} />
+          ))}
         </View>
       </ScrollView>
     </View>
