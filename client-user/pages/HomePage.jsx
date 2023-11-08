@@ -1,6 +1,26 @@
-import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image } from "react-native";
+import { useEffect, useState } from "react";
+import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from "react-native";
+import JobCard from "../components/JobCard";
 
 export default function HomePage() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://jobhub-server.huseinhk.me/public/jobs");
+      if (!response.ok) {
+        throw { name: "fetch_error" };
+      }
+      const resposneBody = await response.json();
+      setData(resposneBody);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={style.AndroidSafeArea}>
       <View className="bg-white p-4">
@@ -18,18 +38,13 @@ export default function HomePage() {
             </TouchableOpacity>
           </View>
         </View>
+        {/* <FlatList data={data} renderItem=() /> */}
         <View className="bg-white m-2 p-4 rounded">
-          <Image />
-          <View>
-            <Text className="text-blue-700 font-bold">{"IT SUPPORT (Area : Bengkulu & Lampung)"}</Text>
-            <Image />
-          </View>
+          {data.map((el) => (
+            <JobCard data={el} />
+          ))}
         </View>
       </ScrollView>
-
-      <View className="bg-white p-4">
-        <Text className="text-blue-900 text-center text-lg font-extrabold">Rekomendasi Pekerjaan</Text>
-      </View>
     </View>
   );
 }
