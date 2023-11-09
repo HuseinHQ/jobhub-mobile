@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Software Engineer",
+    "description": "Developing web applications and maintaining existing software.",
+    "companyId": "2",
+    "authorId": 1,
+    "jobType": "full time"
+  },
+  {
+    "title": "Marketing Coordinator",
+    "description": "Planning and executing marketing campaigns for our products.",
+    "companyId": 2,
+    "authorId": 1,
+    "jobType": "full time"
+  },
+  {
+    "title": "Graphic Designer",
+    "description": "Creating visually appealing graphics for various projects.",
+    "companyId": 3,
+    "authorId": 2,
+    "jobType": "part time"
+  },
+  {
+    "title": "Customer Support Representative",
+    "description": "Assisting customers with inquiries and resolving issues.",
+    "companyId": 4,
+    "authorId": 2,
+    "jobType": "full time"
+  },
+  {
+    "title": "Accountant",
+    "description": "Managing financial records and preparing reports.",
+    "companyId": 5,
+    "authorId": 1,
+    "jobType": "full time"
+  },
+  {
+    "title": "Sales Associate",
+    "description": "Selling products and providing exceptional customer service.",
+    "companyId": 1,
+    "authorId": 2,
+    "jobType": "part time"
+  },
+  {
+    "title": "Content Writer",
+    "description": "Creating engaging and informative content for various platforms.",
+    "companyId": 2,
+    "authorId": 1,
+    "jobType": "part time"
+  },
+  {
+    "title": "Data Analyst",
+    "description": "Analyzing data and providing insights to support business decisions.",
+    "companyId": 3,
+    "authorId": 1,
+    "jobType": "full time"
+  },
+  {
+    "title": "HR Manager",
+    "description": "Managing human resources functions and employee relations.",
+    "companyId": 4,
+    "authorId": 2,
+    "jobType": "full time"
+  },
+  {
+    "title": "Delivery Driver",
+    "description": "Delivering goods to customers in a timely and safe manner.",
+    "companyId": 5,
+    "authorId": 2,
+    "jobType": "part time"
+  }
+]

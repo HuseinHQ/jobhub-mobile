@@ -1,0 +1,72 @@
+[
+  {
+    "name": "BNI",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "San Francisco, CA",
+    "email": "info@techinnovators.com",
+    "description": "A leading tech company focused on innovation and cutting-edge solutions."
+  },
+  {
+    "name": "Gojek",
+    "companyLogo": "https://avatars.githubusercontent.com/u/29785210?s=200&v=4",
+    "location": "New York, NY",
+    "email": "contact@globalmarketing.com",
+    "description": "Specializing in marketing and advertising strategies for global brands."
+  },
+  {
+    "name": "Grab",
+    "companyLogo": "https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png",
+    "location": "Los Angeles, CA",
+    "email": "hello@designcraftstudios.com",
+    "description": "Creative design and branding agency offering top-notch design services."
+  },
+  {
+    "name": "Shopee",
+    "companyLogo": "https://leapsurabaya.sch.id/wp-content/uploads/2020/06/Shopee-logo.jpg",
+    "location": "Chicago, IL",
+    "email": "support@customercarepro.com",
+    "description": "Dedicated to providing excellent customer support solutions."
+  },
+  {
+    "name": "Apple",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Boston, MA",
+    "email": "info@financialwizardsllc.com",
+    "description": "Experts in financial services and investment strategies."
+  },
+  {
+    "name": "Microsoft",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Seattle, WA",
+    "email": "contact@salesgeniusco.com",
+    "description": "Driving sales success through innovative strategies and solutions."
+  },
+  {
+    "name": "Amazon",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Austin, TX",
+    "email": "info@contentcreatorsnetwork.com",
+    "description": "A network of talented content creators and storytellers."
+  },
+  {
+    "name": "Intel",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Denver, CO",
+    "email": "contact@datainsightsltd.com",
+    "description": "Unlocking valuable insights from data for informed decisions."
+  },
+  {
+    "name": "Google",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Miami, FL",
+    "email": "info@hrsolutionsgroup.com",
+    "description": "Comprehensive human resources and talent management solutions."
+  },
+  {
+    "name": "UNIQLO",
+    "companyLogo": "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/263px-BNI_logo.svg.png",
+    "location": "Dallas, TX",
+    "email": "contact@expresslogisticsinc.com",
+    "description": "Efficient logistics and supply chain solutions for businesses."
+  }
+]

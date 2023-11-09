@@ -1,0 +1,18 @@
+[
+  {
+    "username": "John Doe",
+    "email": "johndoe@mail.com",
+    "password": "johndoe",
+    "role": "admin",
+    "phoneNumber": "123456789123",
+    "address": "Indonesia"
+  },
+  {
+    "username": "Emma Wattson",
+    "email": "emmawattson@mail.com",
+    "password": "emmawattson",
+    "role": "admin",
+    "phoneNumber": "123456789123",
+    "address": "Indonesia"
+  }
+]
