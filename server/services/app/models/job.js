@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Job.belongsTo(models.Company, { foreignKey: "companyId" });
       Job.hasMany(models.Skill, { foreignKey: "jobId" });
-      Job.belongsTo(models.User, { foreignKey: "authorId" });
     }
   }
   Job.init(
@@ -32,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       companyId: DataTypes.INTEGER,
-      authorId: DataTypes.INTEGER,
+      authorId: DataTypes.STRING,
       jobType: {
         type: DataTypes.STRING,
         allowNull: false,
