@@ -3,7 +3,7 @@ const { Job, Skill, sequelize } = require("../models/");
 class JobController {
   static async getAllJobs(req, res, next) {
     try {
-      const data = await Job.findAll({ order: [["updatedAt", "DESC"]], include: [Skill, "Company", "User"] });
+      const data = await Job.findAll({ order: [["updatedAt", "DESC"]], include: [Skill, "Company"] });
       res.status(200).json(data);
     } catch (error) {
       next(error);
@@ -14,7 +14,7 @@ class JobController {
     try {
       const { jobId } = req.params;
       const data = await Job.findByPk(jobId, {
-        include: ["Skills", "User", "Company"],
+        include: ["Skills", "Company"],
       });
       res.status(200).json(data);
     } catch (error) {
@@ -25,8 +25,7 @@ class JobController {
   static async postJobs(req, res, next) {
     try {
       await sequelize.transaction(async (t) => {
-        const { title, description, companyId, jobType, Skills } = req.body;
-        const authorId = req.user.id;
+        const { title, description, companyId, authorId, jobType, Skills } = req.body;
 
         const newJob = await Job.create({ title, description, companyId, authorId, jobType }, { transaction: t });
 
