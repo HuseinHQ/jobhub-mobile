@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { GraphQLError } = require("graphql");
 
 const job_url = "http://localhost:4002/jobs/";
 const user_url = "http://localhost:4001/users/";
@@ -11,6 +12,8 @@ const appTypeDefs = `#graphql
     companyId: Int,
     authorId: String,
     jobType: String,
+    createdAt: String,
+    updatedAt: String,
     Skills: [Skill],
     Company: Company,
     User: User
@@ -19,7 +22,10 @@ const appTypeDefs = `#graphql
   type Skill {
     id: ID,
     name: String,
-    level: String
+    level: String,
+    jobId: Int,
+    createdAt: String,
+    updatedAt: String
   }
 
   type Company {
@@ -28,7 +34,9 @@ const appTypeDefs = `#graphql
     companyLogo: String,
     location: String,
     email: String,
-    description: String
+    description: String,
+    createdAt: String,
+    updatedAt: String
   }
 
   type User {
@@ -38,12 +46,39 @@ const appTypeDefs = `#graphql
     password: String,
     role: String,
     phoneNumber: String
-    address: String
+    address: String,
+    createdAt: String,
+    updatedAt: String
+  }
+
+  type Message {
+    message: String
   }
 
   type Query {
     jobs: [Job],
     job(id: ID!): Job
+  }
+
+  input SkillInput {
+    id: ID
+    name: String,
+    level: String
+  }
+
+  input JobInput {
+    title: String,
+    description: String,
+    companyId: Int,
+    authorId: String,
+    jobType: String,
+    Skills: [SkillInput]
+  }
+
+  type Mutation {
+    createJob(content: JobInput): Message,
+    updateJob(content: JobInput, id: ID!): Message,
+    deleteJob(id: ID!): Message
   }
 `;
 
@@ -55,7 +90,9 @@ const appResolvers = {
 
         return data;
       } catch (err) {
-        console.log(err);
+        throw new GraphQLError(err.response.data.message, {
+          extensions: { code: err.response.status, http: { status: err.response.status } },
+        });
       }
     },
     job: async (_, { id }) => {
@@ -65,8 +102,53 @@ const appResolvers = {
 
         job.User = user;
         return job;
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        throw new GraphQLError(err.response.data.message, {
+          extensions: { code: err.response.status, http: { status: err.response.status } },
+        });
+      }
+    },
+  },
+  Mutation: {
+    createJob: async (_, { content }) => {
+      try {
+        const { data } = await axios({
+          method: "post",
+          url: job_url,
+          data: content,
+        });
+
+        return data;
+      } catch (err) {
+        throw new GraphQLError(err.response.data.message, {
+          extensions: { code: err.response.status, http: { status: err.response.status } },
+        });
+      }
+    },
+    updateJob: async (_, { content, id }) => {
+      try {
+        const { data } = await axios({
+          method: "put",
+          url: job_url + id,
+          data: content,
+        });
+
+        return data;
+      } catch (err) {
+        throw new GraphQLError(err.response.data.message, {
+          extensions: { code: err.response.status, http: { status: err.response.status } },
+        });
+      }
+    },
+    deleteJob: async (_, { id }) => {
+      try {
+        const { data } = await axios.delete(job_url + id);
+
+        return data;
+      } catch (err) {
+        throw new GraphQLError(err.response.data.message, {
+          extensions: { code: err.response.status, http: { status: err.response.status } },
+        });
       }
     },
   },

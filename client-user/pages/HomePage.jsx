@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from "react-native";
 import JobCard from "../components/JobCard";
+import axios from "axios";
 
 export default function HomePage() {
   const [data, setData] = useState([]);
