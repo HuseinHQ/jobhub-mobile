@@ -23,6 +23,8 @@ const userResolvers = {
   Query: {
     users: async () => {
       try {
+        const { data } = await axios.get(user_url);
+        return data;
       } catch (err) {
         console.log(err);
       }
