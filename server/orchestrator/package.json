@@ -1,8 +1,8 @@
 {
-  "name": "app",
+  "name": "orchestrator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "npx nodemon app.js"
   },
@@ -10,9 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongodb": "^6.2.0"
+    "@apollo/server": "^4.9.5",
+    "axios": "^1.6.1",
+    "graphql": "^16.8.1"
   }
 }
