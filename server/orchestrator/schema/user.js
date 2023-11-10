@@ -1,5 +1,7 @@
 const axios = require("axios");
 const { GraphQLError } = require("graphql");
+const Redis = require("ioredis");
+const redis = new Redis("redis://default:Sirua4yS6GzFm2VIsx08fMCxak4LtmfA@redis-16177.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:16177");
 
 const user_url = "http://localhost:4001/users/";
 
@@ -43,8 +45,18 @@ const userResolvers = {
   Query: {
     users: async () => {
       try {
-        const { data } = await axios.get(user_url);
-        return data;
+        const usersCache = await redis.get("users");
+
+        if (usersCache) {
+          const result = JSON.parse(usersCache);
+          return result;
+        } else {
+          const { data } = await axios.get(user_url);
+
+          const dataToCache = JSON.stringify(data);
+          await redis.set("users", dataToCache);
+          return data;
+        }
       } catch (err) {
         throw new GraphQLError(err.response.data.message, {
           extensions: { code: err.response.status, http: { status: err.response.status } },
@@ -71,6 +83,7 @@ const userResolvers = {
           data: content,
         });
 
+        await redis.del("users");
         return data;
       } catch (err) {
         throw new GraphQLError(err.response.data.message, {
@@ -81,6 +94,8 @@ const userResolvers = {
     deleteUser: async (_, { id }) => {
       try {
         const { data } = await axios.delete(user_url + id);
+
+        await redis.del("users");
         return data;
       } catch (err) {
         throw new GraphQLError(err.response.data.message, {
