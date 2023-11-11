@@ -34,7 +34,7 @@ class User {
     }
   }
 
-  static async create({ username, email, password, role, phoneNumber, address }) {
+  static async create({ username, email, password, role = "admin", phoneNumber, address }) {
     try {
       const collection = await this.collection();
 
