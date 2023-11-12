@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { View, StatusBar, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, ScrollView, FlatList } from "react-native";
 import JobCard from "../components/JobCard";
-// import axios from "axios";
 import GreetingCard from "../components/GreetingCard";
 import { gql, useQuery } from "@apollo/client";
+import LottieView from "lottie-react-native";
 
 const GET_JOBS = gql`
   query FetchJobs {
@@ -22,13 +21,20 @@ const GET_JOBS = gql`
 
 export default function HomePage() {
   const { loading, error, data } = useQuery(GET_JOBS);
-  console.log(data);
-  if (loading)
+  if (loading) {
     return (
-      <View>
-        <Text>Loading...</Text>
+      <View className="flex-1 justify-center items-center">
+        <LottieView
+          autoPlay
+          style={{
+            width: 200,
+            height: 200,
+          }}
+          source={require("../assets/loading.json")}
+        />
       </View>
     );
+  }
 
   if (error)
     return (
@@ -39,10 +45,12 @@ export default function HomePage() {
 
   return (
     <View>
-      <ScrollView>
-        <GreetingCard />
-        <FlatList data={data.jobs} renderItem={({ item }) => <JobCard data={item} />} keyExtractor={(item) => item.id} />
-      </ScrollView>
+      <FlatList
+        data={data.jobs}
+        renderItem={({ item }) => <JobCard data={item} />}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={<GreetingCard />}
+      />
     </View>
   );
 }

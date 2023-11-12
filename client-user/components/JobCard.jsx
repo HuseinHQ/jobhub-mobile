@@ -31,6 +31,7 @@ export default function JobCard({ data }) {
       onPress={() =>
         navigation.navigate("detail", {
           id: data.id,
+          title: data.title,
         })
       }
       className="bg-white p-4 mx-2 my-1 rounded border-l-4 border-l-blue-600"
@@ -51,7 +52,7 @@ export default function JobCard({ data }) {
 
 const styles = StyleSheet.create({
   thumbnail: {
-    width: 80,
+    width: 40,
     height: 40,
     resizeMode: "contain",
   },

@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomePage from "../pages/HomePage";
 import Foundation from "@expo/vector-icons/Foundation";
-import { HomeStackNavigator } from "./StackNavigator";
 
 export default function TabNavigator() {
   const Tab = createBottomTabNavigator();
@@ -10,7 +9,7 @@ export default function TabNavigator() {
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Beranda"
-        component={HomeStackNavigator}
+        component={HomePage}
         options={{
           tabBarIcon: ({ color, size }) => <Foundation name="home" color={color} size={size} />,
         }}

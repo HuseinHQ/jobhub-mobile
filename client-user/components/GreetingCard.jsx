@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function GreetingCard() {
   return (
@@ -8,9 +9,10 @@ export default function GreetingCard() {
       </View>
       <View style={styles.rightSide}>
         <Text className="text-lg font-extrabold leading-6">Rekomendasi pekerjaan terbaik segera hadir</Text>
-        <Text>Kami sedang mengembangkan aplikasi kami untuk memberikan pekerjaan yang pas buatmu</Text>
-        <TouchableOpacity>
-          <Text className="font-bold">Info selengkapnya {">"}</Text>
+        <Text className="text-xs text-slate-600">Kami sedang mengembangkan aplikasi kami untuk memberikan pekerjaan yang pas buatmu</Text>
+        <TouchableOpacity className="flex-row">
+          <Text className="font-bold">Info selengkapnya</Text>
+          <MaterialIcons name="navigate-next" size={24} color="black" className="font-light" />
         </TouchableOpacity>
       </View>
     </View>

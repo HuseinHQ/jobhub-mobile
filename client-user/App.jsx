@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
-import TabNavigator from "./Navigator/TabNavigator";
+// import TabNavigator from "./Navigator/TabNavigator";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import StackNavigator from "./Navigator/StackNavigator";
 
 const client = new ApolloClient({
   uri: "https://f92d-202-80-218-75.ngrok-free.app",
@@ -11,7 +12,7 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <TabNavigator />
+        <StackNavigator />
       </NavigationContainer>
     </ApolloProvider>
   );
