@@ -23,8 +23,6 @@ class CompanyController {
   static async postCompanies(req, res, next) {
     try {
       const { name, companyLogo, location, email, description } = req.body;
-      const authorId = req.user.id;
-      console.log(authorId);
 
       await Company.create({ name, companyLogo, location, email, description });
 

@@ -1,0 +1,29 @@
+services:
+  orchestrator:
+    build: ./orchestrator
+    ports:
+      - "4000:80"
+    environment:
+      - JOB_URL=$JOB_URL
+      - USER_URL=$USER_URL
+      - PORT=80
+    volumes:
+      - ./orchestrator:/orchestrator
+
+  app:
+    build: ./services/app
+    ports:
+      - "4002:4002"
+    environment:
+      - DATABASE_URL=$DATABASE_URL
+      - PORT=4002
+      - NODE_ENV=production
+
+  user:
+    build: ./services/users
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+    volumes:
+      - ./services/users:/users
