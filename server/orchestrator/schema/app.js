@@ -3,8 +3,8 @@ const { GraphQLError } = require("graphql");
 const Redis = require("ioredis");
 const redis = new Redis("redis://default:Sirua4yS6GzFm2VIsx08fMCxak4LtmfA@redis-16177.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:16177");
 
-const job_url = "http://localhost:4002/jobs/";
-const user_url = "http://localhost:4001/users/";
+const job_url = process.env.JOB_URL || "http://localhost:4002/jobs/";
+const user_url = process.env.USER_URL || "http://localhost:4001/users/";
 
 const appTypeDefs = `#graphql
   type Job {
@@ -88,6 +88,7 @@ const appResolvers = {
   Query: {
     jobs: async () => {
       try {
+        console.log(job_url);
         const jobsCache = await redis.get("jobs");
 
         if (jobsCache) {

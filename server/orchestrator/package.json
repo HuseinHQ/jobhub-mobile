@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "npx nodemon app.js"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "dependencies": {
     "@apollo/server": "^4.9.5",
     "axios": "^1.6.1",
+    "dotenv": "^16.3.1",
     "graphql": "^16.8.1",
     "ioredis": "^5.3.2"
   }

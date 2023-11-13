@@ -4,7 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import StackNavigator from "./Navigator/StackNavigator";
 
 const client = new ApolloClient({
-  uri: "https://f92d-202-80-218-75.ngrok-free.app",
+  uri: "https://ffb3-103-165-209-194.ngrok-free.app",
   cache: new InMemoryCache(),
 });
 

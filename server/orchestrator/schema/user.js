@@ -3,7 +3,7 @@ const { GraphQLError } = require("graphql");
 const Redis = require("ioredis");
 const redis = new Redis("redis://default:Sirua4yS6GzFm2VIsx08fMCxak4LtmfA@redis-16177.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:16177");
 
-const user_url = "http://localhost:4001/users/";
+const user_url = process.env.USER_URL || "http://localhost:4001/users/";
 
 const userTypeDefs = `#graphql
   type User {
