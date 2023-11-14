@@ -7,6 +7,7 @@ services:
       - JOB_URL=$JOB_URL
       - USER_URL=$USER_URL
       - PORT=80
+      - NODE_ENV=production
 
   app:
     build: ./services/app
