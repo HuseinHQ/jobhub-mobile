@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-const cors = require("cors");
 
 const { ApolloServer } = require("@apollo/server");
 const { startStandaloneServer } = require("@apollo/server/standalone");
@@ -12,10 +11,6 @@ const server = new ApolloServer({
   typeDefs: [appTypeDefs, userTypeDefs],
   resolvers: [appResolvers, userResolvers],
   instropection: true,
-});
-
-server.applyMiddLeware({
-  cors: true,
 });
 
 startStandaloneServer(server, {

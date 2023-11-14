@@ -38,8 +38,15 @@ export default function HomePage() {
 
   if (error)
     return (
-      <View>
-        <Text>Error</Text>
+      <View className="flex-1 justify-center items-center">
+        <LottieView
+          autoPlay
+          style={{
+            width: 350,
+            height: 350,
+          }}
+          source={require("../assets/error.json")}
+        />
       </View>
     );
 

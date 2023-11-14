@@ -64,6 +64,21 @@ export default function DetailPage() {
     );
   }
 
+  if (error) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <LottieView
+          autoPlay
+          style={{
+            width: 350,
+            height: 350,
+          }}
+          source={require("../assets/error.json")}
+        />
+      </View>
+    );
+  }
+
   const alert = (title, msg) => Alert.alert(title, msg);
 
   return (
